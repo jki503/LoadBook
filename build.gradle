@@ -1,0 +1,53 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.10'
+    id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id 'java'
+}
+
+group = 'com.loadbook'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Spring
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    // WAS: undertow
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    //JPA
+    implementation'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //DB
+    runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    //Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // spring-boot-security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'com.auth0:java-jwt:3.18.1'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
