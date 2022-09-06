@@ -1,5 +1,7 @@
 package com.loadbook.common.entity;
 
+import static lombok.AccessLevel.*;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.EntityListeners;
@@ -10,10 +12,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = PROTECTED)
 public class BaseEntity {
 
 	@CreatedDate

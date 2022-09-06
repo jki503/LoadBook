@@ -13,7 +13,7 @@ import com.loadbook.user.entity.vo.BaseUserInformation;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user")
+@Table(name = "general_user")
 @NoArgsConstructor(access = PROTECTED)
 public class GeneralUser extends User {
 
