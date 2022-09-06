@@ -2,12 +2,14 @@ package com.loadbook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-public class LoadbookApplication {
+@EnableJpaAuditing
+public class LoadBookApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LoadbookApplication.class, args);
+		SpringApplication.run(LoadBookApplication.class, args);
 	}
 
 }
