@@ -22,6 +22,7 @@ public class GeneralUser extends User {
 
 	public GeneralUser(BaseUserInformation userInformation, String password) {
 		super(userInformation);
+		validatePassword(password);
 		this.password = password;
 	}
 
