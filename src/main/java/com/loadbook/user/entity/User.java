@@ -30,10 +30,10 @@ public abstract class User extends BaseEntity {
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = IDENTITY)
-	private Long id;
+	protected Long id;
 
 	@Embedded
-	private BaseUserInformation userInformation;
+	protected BaseUserInformation userInformation;
 
 	public User(BaseUserInformation userInformation) {
 		Assert.notNull(userInformation, "유저 정보를 입력하세요.");
