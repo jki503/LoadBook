@@ -10,7 +10,7 @@ class BaseUserInformationTest {
 
 	private String correctNickName = "인민영웅";
 
-	private String correctEmail = "test1234@naver.com";
+	private String correctEmail = "test1234@gmail.com";
 
 	@Test
 	public void 닉네임이_null일_경우() {

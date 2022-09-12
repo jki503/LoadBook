@@ -8,6 +8,7 @@ import javax.persistence.Table;
 
 import org.springframework.util.Assert;
 
+import com.loadbook.common.util.RegexValidatorUtil;
 import com.loadbook.user.entity.vo.BaseUserInformation;
 
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class GeneralUser extends User {
 	}
 
 	private void validatePassword(String password) {
-		Assert.hasText(password, "비밀번호가 공백일 수 없습니다.");
+		Assert.isTrue(RegexValidatorUtil.isPasswordPattern(password), "비밀번호 규격을 지켜주세요");
 	}
+
 }

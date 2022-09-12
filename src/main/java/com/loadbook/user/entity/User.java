@@ -39,4 +39,8 @@ public abstract class User extends BaseEntity {
 		Assert.notNull(userInformation, "유저 정보를 입력하세요.");
 		this.userInformation = userInformation;
 	}
+
+	public BaseUserInformation getUserInformation() {
+		return userInformation;
+	}
 }

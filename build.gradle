@@ -30,7 +30,7 @@ dependencies {
 
 
     //JPA
-    implementation'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     //DB
     runtimeOnly 'mysql:mysql-connector-java'
@@ -46,6 +46,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'com.auth0:java-jwt:3.18.1'
 
+    //Apache Commons
+    implementation 'commons-validator:commons-validator:1.7'
 }
 
 tasks.named('test') {
