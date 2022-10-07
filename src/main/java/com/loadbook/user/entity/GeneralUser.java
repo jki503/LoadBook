@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.Assert;
 
 import com.loadbook.common.util.RegexValidatorUtil;
@@ -29,6 +30,11 @@ public class GeneralUser extends User {
 
 	private void validatePassword(String password) {
 		Assert.isTrue(RegexValidatorUtil.isPasswordPattern(password), "비밀번호 규격을 지켜주세요");
+	}
+
+	public GeneralUser hashPassword(PasswordEncoder passwordEncoder) {
+		this.password = passwordEncoder.encode(this.password);
+		return this;
 	}
 
 }
