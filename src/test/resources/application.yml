@@ -1,11 +1,8 @@
 Spring:
-  config:
-    activate:
-      on-profile: local
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3307/loadbook_local
+    url: jdbc:mysql://127.0.0.1:3307/loadbook_test
     username: root
     password: 1234
     hikari:
@@ -20,8 +17,7 @@ Spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
-        default_batch_fetch_size: 100
-
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
   redis:
     host: localhost
     port: 6379
