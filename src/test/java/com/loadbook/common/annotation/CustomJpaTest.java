@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Repository;
 import org.springframework.test.context.ActiveProfiles;
 
+import com.loadbook.common.configuration.TestConfig;
 import com.loadbook.common.util.BeanUtil;
 
 @Target(ElementType.TYPE)
@@ -19,6 +20,6 @@ import com.loadbook.common.util.BeanUtil;
 @DataJpaTest(includeFilters = {@ComponentScan.Filter(Repository.class)})
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Import(BeanUtil.class)
+@Import({BeanUtil.class, TestConfig.class})
 public @interface CustomJpaTest {
 }
