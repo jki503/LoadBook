@@ -33,12 +33,11 @@ class BookRepositoryTest {
 	public void 책이_제대로_저장되는지() {
 		Book wishBook = new Book(
 			new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
-				"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다"),
+				"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다", null),
 			null,
 			new ReadingBookInformation(250, 125),
 			null,
 			BookType.READING,
-			null,
 			null,
 			null,
 			user);

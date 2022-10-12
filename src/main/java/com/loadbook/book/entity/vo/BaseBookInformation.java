@@ -33,10 +33,15 @@ public class BaseBookInformation {
 	@Column(nullable = false)
 	private Integer bookPages;
 
+	@Column(nullable = false)
 	private String detailLink;
 
+	@Lob
+	@Column(nullable = true)
+	private String memo;
+
 	public BaseBookInformation(String isbn, String isbn13, String authors, String description, String publisher,
-		Integer bookPages, String detailLink) {
+		Integer bookPages, String detailLink, String memo) {
 		validateISBN(isbn);
 		validateISBN13(isbn13);
 		validateAuthors(authors);
@@ -51,6 +56,7 @@ public class BaseBookInformation {
 		this.publisher = publisher;
 		this.bookPages = bookPages;
 		this.detailLink = detailLink;
+		this.memo = memo;
 	}
 
 	private void validateISBN(String isbn) {
@@ -83,4 +89,5 @@ public class BaseBookInformation {
 	private void validateDetailLink(String detailLink) {
 		hasText(detailLink, "책의 링크는 공백일 수 없습니다.");
 	}
+
 }
