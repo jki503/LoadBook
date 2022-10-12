@@ -3,6 +3,7 @@ package com.loadbook.book.entity;
 import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.*;
 import static lombok.AccessLevel.*;
+import static org.springframework.util.Assert.*;
 
 import java.time.LocalDate;
 
@@ -109,6 +110,7 @@ public class Book extends BaseEntity {
 		String memo,
 		User user
 	) {
+		validateBookType(bookType);
 		this.baseBookInformation = baseBookInformation;
 		this.wishBookInformation = wishBookInformation;
 		this.readingBookInformation = readingBookInformation;
@@ -118,5 +120,17 @@ public class Book extends BaseEntity {
 		this.endDate = endDate;
 		this.memo = memo;
 		this.user = user;
+	}
+
+	private void validateBookType(BookType bookType) {
+		notNull(bookType, "책의 종류를 명시해주세요");
+	}
+
+	private void validateUser(User user) {
+		notNull(user, "유저가 null일 수 없습니다.");
+	}
+
+	public Integer getBookPages() {
+		return this.baseBookInformation.getBookPages();
 	}
 }

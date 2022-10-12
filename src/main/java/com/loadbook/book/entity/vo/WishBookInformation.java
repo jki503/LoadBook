@@ -1,6 +1,7 @@
 package com.loadbook.book.entity.vo;
 
 import static lombok.AccessLevel.*;
+import static org.springframework.util.Assert.*;
 
 import javax.persistence.Embeddable;
 
@@ -21,4 +22,8 @@ public class WishBookInformation {
 		this.expectationReview = expectationReview;
 	}
 
+	private void validateExpectedRating(Integer expectedRating) {
+		notNull(expectedRating, "기대 지수는 null일 수 없습니다.");
+		isTrue(expectedRating > 0 && expectedRating <= 10, "기대 지수는 0보다 크고 10이하여야합니다.");
+	}
 }

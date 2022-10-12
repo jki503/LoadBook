@@ -3,19 +3,17 @@ package com.loadbook.book.repository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import com.loadbook.book.entity.Book;
 import com.loadbook.book.entity.vo.BaseBookInformation;
 import com.loadbook.book.entity.vo.BookType;
-import com.loadbook.book.entity.vo.WishBookInformation;
+import com.loadbook.book.entity.vo.ReadingBookInformation;
 import com.loadbook.common.annotation.CustomJpaTest;
 import com.loadbook.user.entity.GeneralUser;
 import com.loadbook.user.entity.vo.BaseUserInformation;
 import com.loadbook.user.repository.UserRepository;
 
 @CustomJpaTest
-@Rollback(false)
 class BookRepositoryTest {
 
 	@Autowired
@@ -36,10 +34,10 @@ class BookRepositoryTest {
 		Book wishBook = new Book(
 			new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
 				"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다"),
-			new WishBookInformation(9, "너무 기대된다"),
 			null,
+			new ReadingBookInformation(250, 125),
 			null,
-			BookType.WISH,
+			BookType.READING,
 			null,
 			null,
 			null,
