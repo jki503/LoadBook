@@ -18,6 +18,7 @@ import org.springframework.util.Assert;
 import com.loadbook.common.entity.BaseEntity;
 import com.loadbook.user.entity.vo.BaseUserInformation;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = PROTECTED)
 @Inheritance(strategy = JOINED)
 @DiscriminatorColumn
+@Getter
 public abstract class User extends BaseEntity {
 
 	@Id
