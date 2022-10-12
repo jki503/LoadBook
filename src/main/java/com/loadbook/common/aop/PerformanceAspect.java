@@ -31,7 +31,7 @@ public class PerformanceAspect {
 	private static final double MAX_PERFORMANCE_TIME = 3;
 	private final ObjectMapper objectMapper;
 
-	@Around("execution(* com.loadbook..controller.*Controller.*(..))")
+	@Around("execution(* com.loadbook.domain..controller.*Controller.*(..))")
 	public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
 		HttpServletRequest request = ((ServletRequestAttributes)Objects.requireNonNull(
 			RequestContextHolder.getRequestAttributes())).getRequest();

@@ -1,4 +1,4 @@
-package com.loadbook.user.entity.vo;
+package com.loadbook.domain.user.entity.vo;
 
 import static lombok.AccessLevel.*;
 

@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.loadbook.domain.user.entity.vo.BaseUserInformation;
+
 @DisplayName("기본 유저 정보 테스트: ")
 class BaseUserInformationTest {
 

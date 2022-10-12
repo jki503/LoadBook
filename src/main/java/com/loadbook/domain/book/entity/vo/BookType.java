@@ -1,4 +1,4 @@
-package com.loadbook.book.entity.vo;
+package com.loadbook.domain.book.entity.vo;
 
 public enum BookType {
 	FINISHED, READING, WISH

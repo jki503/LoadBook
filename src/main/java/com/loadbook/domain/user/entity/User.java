@@ -1,4 +1,4 @@
-package com.loadbook.user.entity;
+package com.loadbook.domain.user.entity;
 
 import static javax.persistence.GenerationType.*;
 import static javax.persistence.InheritanceType.*;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.springframework.util.Assert;
 
 import com.loadbook.common.entity.BaseEntity;
-import com.loadbook.user.entity.vo.BaseUserInformation;
+import com.loadbook.domain.user.entity.vo.BaseUserInformation;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

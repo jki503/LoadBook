@@ -1,11 +1,11 @@
-package com.loadbook.user.service;
+package com.loadbook.domain.user.service;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.loadbook.user.controller.request.UserRegisterRequest;
-import com.loadbook.user.entity.GeneralUser;
-import com.loadbook.user.repository.UserRepository;
+import com.loadbook.domain.user.controller.request.UserRegisterRequest;
+import com.loadbook.domain.user.repository.UserRepository;
+import com.loadbook.domain.user.entity.GeneralUser;
 
 import lombok.RequiredArgsConstructor;
 

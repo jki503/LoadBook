@@ -1,12 +1,12 @@
-package com.loadbook.book.repository;
+package com.loadbook.domain.book.repository;
 
-import static com.loadbook.book.entity.QBook.*;
-import static com.loadbook.user.entity.QUser.*;
+import static com.loadbook.domain.book.entity.QBook.*;
+import static com.loadbook.domain.user.entity.QUser.*;
 
 import java.util.List;
 
-import com.loadbook.book.entity.Book;
-import com.loadbook.book.entity.vo.BookType;
+import com.loadbook.domain.book.entity.Book;
+import com.loadbook.domain.book.entity.vo.BookType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 

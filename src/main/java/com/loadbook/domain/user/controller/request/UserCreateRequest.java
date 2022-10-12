@@ -1,4 +1,4 @@
-package com.loadbook.user.controller.request;
+package com.loadbook.domain.user.controller.request;
 
 public class UserCreateRequest {
 

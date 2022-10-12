@@ -1,9 +1,9 @@
-package com.loadbook.user.controller.request;
+package com.loadbook.domain.user.controller.request;
 
 import org.springframework.util.Assert;
 
-import com.loadbook.user.entity.GeneralUser;
-import com.loadbook.user.entity.vo.BaseUserInformation;
+import com.loadbook.domain.user.entity.GeneralUser;
+import com.loadbook.domain.user.entity.vo.BaseUserInformation;
 
 import lombok.Getter;
 

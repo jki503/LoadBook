@@ -36,7 +36,7 @@ public class LoggingAspect {
 	private static final String ERROR_LOG_FORMAT = "API 로그를 생성하는 과정에서 문제가 생겼습니다.";
 	private final ObjectMapper objectMapper;
 
-	@Around("execution(* com.loadbook..controller.*Controller.*(..))")
+	@Around("execution(* com.loadbook.domain..controller.*Controller.*(..))")
 	public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
 		HttpServletRequest request = ((ServletRequestAttributes)Objects.requireNonNull(
 			RequestContextHolder.getRequestAttributes())).getRequest();

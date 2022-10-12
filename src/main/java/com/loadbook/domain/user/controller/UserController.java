@@ -1,4 +1,4 @@
-package com.loadbook.user.controller;
+package com.loadbook.domain.user.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.loadbook.user.controller.request.UserRegisterRequest;
-import com.loadbook.user.service.UserService;
+import com.loadbook.domain.user.controller.request.UserRegisterRequest;
+import com.loadbook.domain.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 

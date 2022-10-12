@@ -11,15 +11,16 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.loadbook.book.entity.Book;
-import com.loadbook.book.entity.vo.BaseBookInformation;
-import com.loadbook.book.entity.vo.BookType;
-import com.loadbook.book.entity.vo.ReadingBookInformation;
-import com.loadbook.book.entity.vo.WishBookInformation;
+import com.loadbook.domain.book.entity.Book;
+import com.loadbook.domain.book.entity.vo.BaseBookInformation;
+import com.loadbook.domain.book.entity.vo.BookType;
+import com.loadbook.domain.book.entity.vo.ReadingBookInformation;
+import com.loadbook.domain.book.entity.vo.WishBookInformation;
 import com.loadbook.common.annotation.CustomJpaTest;
-import com.loadbook.user.entity.GeneralUser;
-import com.loadbook.user.entity.vo.BaseUserInformation;
-import com.loadbook.user.repository.UserRepository;
+import com.loadbook.domain.book.repository.BookRepository;
+import com.loadbook.domain.user.entity.GeneralUser;
+import com.loadbook.domain.user.entity.vo.BaseUserInformation;
+import com.loadbook.domain.user.repository.UserRepository;
 
 @CustomJpaTest
 @DisplayName("Book Repository Test: ")

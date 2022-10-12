@@ -1,4 +1,4 @@
-package com.loadbook.book.entity.vo;
+package com.loadbook.domain.book.entity.vo;
 
 import static lombok.AccessLevel.*;
 import static org.springframework.util.Assert.*;

@@ -1,6 +1,5 @@
-package com.loadbook.book.entity;
+package com.loadbook.domain.book.entity;
 
-import static com.loadbook.book.entity.vo.BookType.*;
 import static javax.persistence.EnumType.*;
 import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.*;
@@ -20,13 +19,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.loadbook.book.entity.vo.BaseBookInformation;
-import com.loadbook.book.entity.vo.BookType;
-import com.loadbook.book.entity.vo.FinishedBookInformation;
-import com.loadbook.book.entity.vo.ReadingBookInformation;
-import com.loadbook.book.entity.vo.WishBookInformation;
+import com.loadbook.domain.book.entity.vo.BaseBookInformation;
+import com.loadbook.domain.book.entity.vo.BookType;
+import com.loadbook.domain.book.entity.vo.FinishedBookInformation;
+import com.loadbook.domain.book.entity.vo.ReadingBookInformation;
+import com.loadbook.domain.book.entity.vo.WishBookInformation;
 import com.loadbook.common.entity.BaseEntity;
-import com.loadbook.user.entity.User;
+import com.loadbook.domain.user.entity.User;
 
 import lombok.NoArgsConstructor;
 
@@ -70,7 +69,7 @@ public class Book extends BaseEntity {
 	// 읽고 싶은 책
 	public Book(BaseBookInformation baseBookInformation, WishBookInformation wishBookInformation, String memo,
 		User user) {
-		this(baseBookInformation, wishBookInformation, null, null, WISH, null, null, user);
+		this(baseBookInformation, wishBookInformation, null, null, BookType.WISH, null, null, user);
 	}
 
 	// 읽고 있는 책
@@ -81,7 +80,7 @@ public class Book extends BaseEntity {
 		String memo,
 		User user
 	) {
-		this(baseBookInformation, null, readingBookInformation, null, READING, startDate, null, user);
+		this(baseBookInformation, null, readingBookInformation, null, BookType.READING, startDate, null, user);
 	}
 
 	// 읽은 책
@@ -92,7 +91,7 @@ public class Book extends BaseEntity {
 		LocalDate endDate,
 		String memo,
 		User user) {
-		this(baseBookInformation, null, null, finishedBookInformation, FINISHED, startDate, endDate,
+		this(baseBookInformation, null, null, finishedBookInformation, BookType.FINISHED, startDate, endDate,
 			user);
 	}
 
@@ -126,7 +125,7 @@ public class Book extends BaseEntity {
 		this.wishBookInformation = null;
 		this.readingBookInformation = null;
 		this.finishedBookInformation = finishedBookInformation;
-		this.bookType = FINISHED;
+		this.bookType = BookType.FINISHED;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
@@ -135,7 +134,7 @@ public class Book extends BaseEntity {
 		this.wishBookInformation = null;
 		this.readingBookInformation = readingBookInformation;
 		this.finishedBookInformation = null;
-		this.bookType = READING;
+		this.bookType = BookType.READING;
 		this.startDate = startDate;
 	}
 
@@ -143,7 +142,7 @@ public class Book extends BaseEntity {
 		this.wishBookInformation = wishBookInformation;
 		this.readingBookInformation = null;
 		this.finishedBookInformation = null;
-		this.bookType = WISH;
+		this.bookType = BookType.WISH;
 	}
 
 	/**
