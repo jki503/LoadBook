@@ -1,6 +1,7 @@
 package com.loadbook.book.entity;
 
 import static com.loadbook.book.entity.vo.BookType.*;
+import static javax.persistence.EnumType.*;
 import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.*;
 import static lombok.AccessLevel.*;
@@ -50,7 +51,7 @@ public class Book extends BaseEntity {
 	@Embedded
 	private FinishedBookInformation finishedBookInformation;
 
-	@Enumerated
+	@Enumerated(STRING)
 	private BookType bookType;
 
 	@Column(nullable = true)
