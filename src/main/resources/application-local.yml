@@ -5,7 +5,7 @@ Spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3307/loadbook_local
+    url: jdbc:mysql://127.0.0.1:3306/loadbook_local
     username: root
     password: 1234
     hikari:
