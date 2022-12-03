@@ -11,12 +11,14 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.loadbook.common.annotation.CustomJpaTest;
 import com.loadbook.domain.book.entity.Book;
 import com.loadbook.domain.book.entity.vo.BaseBookInformation;
 import com.loadbook.domain.book.entity.vo.BookType;
+import com.loadbook.domain.book.entity.vo.Duration;
+import com.loadbook.domain.book.entity.vo.FinishedBookInformation;
 import com.loadbook.domain.book.entity.vo.ReadingBookInformation;
 import com.loadbook.domain.book.entity.vo.WishBookInformation;
-import com.loadbook.common.annotation.CustomJpaTest;
 import com.loadbook.domain.book.repository.BookRepository;
 import com.loadbook.domain.user.entity.GeneralUser;
 import com.loadbook.domain.user.entity.vo.BaseUserInformation;
@@ -44,15 +46,11 @@ class BookRepositoryTest {
 
 	@Test
 	public void 책이_제대로_저장되는지() {
-		Book readingBook = new Book(
+		Book readingBook = Book.createReadingBook(
 			new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
 				"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다", null),
-			null,
 			new ReadingBookInformation(250, 125),
-			null,
-			BookType.READING,
-			null,
-			null,
+			new Duration(LocalDate.of(2022, 9, 11), null),
 			user);
 		bookRepository.save(readingBook);
 	}
@@ -60,15 +58,10 @@ class BookRepositoryTest {
 	private void saveWishBooks(int count) {
 		for (int i = 0; i < count; i++) {
 			bookRepository.save(
-				new Book(
+				Book.createWishBook(
 					new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
 						"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다", null),
 					new WishBookInformation(9, null),
-					null,
-					null,
-					BookType.WISH,
-					null,
-					null,
 					user
 				)
 			);
@@ -78,15 +71,11 @@ class BookRepositoryTest {
 	private void saveReadingBooks(int count) {
 		for (int i = 0; i < count; i++) {
 			bookRepository.save(
-				new Book(
+				Book.createReadingBook(
 					new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
 						"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다", null),
-					null,
 					new ReadingBookInformation(250 + i, 125),
-					null,
-					BookType.READING,
-					LocalDate.of(2022, 9, 11),
-					null,
+					new Duration(LocalDate.of(2022, 9, 11), null),
 					user
 				)
 			);
@@ -96,15 +85,11 @@ class BookRepositoryTest {
 	private void saveFinishedBooks(int count) {
 		for (int i = 0; i < count; i++) {
 			bookRepository.save(
-				new Book(
+				Book.createFinishedBook(
 					new BaseBookInformation("isbn123456", "isbn123456789", "김소월",
 						"책이 끝내줌", "한빛미디어", 250, "이책은 끝내주는 책이다", null),
-					null,
-					new ReadingBookInformation(250 + i, 125),
-					null,
-					BookType.FINISHED,
-					LocalDate.of(2022, 9, 11),
-					LocalDate.of(2022, 10, 1),
+					new FinishedBookInformation(2),
+					new Duration(LocalDate.of(2022, 9, 11), LocalDate.of(2022, 10, 1)),
 					user
 				)
 			);

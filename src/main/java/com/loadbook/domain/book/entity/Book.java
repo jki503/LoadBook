@@ -6,9 +6,6 @@ import static javax.persistence.GenerationType.*;
 import static lombok.AccessLevel.*;
 import static org.springframework.util.Assert.*;
 
-import java.time.LocalDate;
-
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -19,12 +16,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.loadbook.common.entity.BaseEntity;
 import com.loadbook.domain.book.entity.vo.BaseBookInformation;
 import com.loadbook.domain.book.entity.vo.BookType;
+import com.loadbook.domain.book.entity.vo.Duration;
 import com.loadbook.domain.book.entity.vo.FinishedBookInformation;
 import com.loadbook.domain.book.entity.vo.ReadingBookInformation;
 import com.loadbook.domain.book.entity.vo.WishBookInformation;
-import com.loadbook.common.entity.BaseEntity;
 import com.loadbook.domain.user.entity.User;
 
 import lombok.NoArgsConstructor;
@@ -50,14 +48,11 @@ public class Book extends BaseEntity {
 	@Embedded
 	private FinishedBookInformation finishedBookInformation;
 
+	@Embedded
+	private Duration duration;
+
 	@Enumerated(STRING)
 	private BookType bookType;
-
-	@Column(nullable = true)
-	private LocalDate startDate;
-
-	@Column(nullable = true)
-	private LocalDate endDate;
 
 	@ManyToOne(fetch = LAZY)
 	@JoinColumn(
@@ -67,42 +62,38 @@ public class Book extends BaseEntity {
 	private User user;
 
 	// 읽고 싶은 책
-	public Book(BaseBookInformation baseBookInformation, WishBookInformation wishBookInformation, String memo,
+	private Book(BaseBookInformation baseBookInformation, WishBookInformation wishBookInformation,
 		User user) {
-		this(baseBookInformation, wishBookInformation, null, null, BookType.WISH, null, null, user);
+		this(baseBookInformation, wishBookInformation, null, null, BookType.WISH, null, user);
 	}
 
 	// 읽고 있는 책
-	public Book(
+	private Book(
 		BaseBookInformation baseBookInformation,
 		ReadingBookInformation readingBookInformation,
-		LocalDate startDate,
-		String memo,
+		Duration duration,
 		User user
 	) {
-		this(baseBookInformation, null, readingBookInformation, null, BookType.READING, startDate, null, user);
+		this(baseBookInformation, null, readingBookInformation, null, BookType.READING, duration, user);
 	}
 
 	// 읽은 책
-	public Book(
+	private Book(
 		BaseBookInformation baseBookInformation,
 		FinishedBookInformation finishedBookInformation,
-		LocalDate startDate,
-		LocalDate endDate,
-		String memo,
-		User user) {
-		this(baseBookInformation, null, null, finishedBookInformation, BookType.FINISHED, startDate, endDate,
-			user);
+		Duration duration,
+		User user
+	) {
+		this(baseBookInformation, null, null, finishedBookInformation, BookType.FINISHED, duration, user);
 	}
 
-	public Book(
+	private Book(
 		BaseBookInformation baseBookInformation,
 		WishBookInformation wishBookInformation,
 		ReadingBookInformation readingBookInformation,
 		FinishedBookInformation finishedBookInformation,
 		BookType bookType,
-		LocalDate startDate,
-		LocalDate endDate,
+		Duration duration,
 		User user
 	) {
 		validateBookType(bookType);
@@ -112,37 +103,60 @@ public class Book extends BaseEntity {
 		this.readingBookInformation = readingBookInformation;
 		this.finishedBookInformation = finishedBookInformation;
 		this.bookType = bookType;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.duration = duration;
 		this.user = user;
+	}
+
+	public static Book createWishBook(
+		BaseBookInformation baseBookInformation,
+		WishBookInformation wishBookInformation,
+		User user) {
+		return new Book(baseBookInformation, wishBookInformation, user);
+	}
+
+	public static Book createReadingBook(
+		BaseBookInformation baseBookInformation,
+		ReadingBookInformation readingBookInformation,
+		Duration duration,
+		User user
+	) {
+		return new Book(baseBookInformation, readingBookInformation, duration, user);
+	}
+
+	public static Book createFinishedBook(
+		BaseBookInformation baseBookInformation,
+		FinishedBookInformation finishedBookInformation,
+		Duration duration,
+		User user
+	) {
+		return new Book(baseBookInformation, finishedBookInformation, duration, user);
 	}
 
 	/**
 	 * update current book to another books
 	 * */
-	public void updateToFinishedBook(FinishedBookInformation finishedBookInformation, LocalDate startDate,
-		LocalDate endDate) {
+	public void update(FinishedBookInformation finishedBookInformation, Duration duration) {
 		this.wishBookInformation = null;
 		this.readingBookInformation = null;
 		this.finishedBookInformation = finishedBookInformation;
 		this.bookType = BookType.FINISHED;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.duration = duration;
 	}
 
-	public void updateToReadingBook(ReadingBookInformation readingBookInformation, LocalDate startDate) {
+	public void update(ReadingBookInformation readingBookInformation, Duration duration) {
 		this.wishBookInformation = null;
 		this.readingBookInformation = readingBookInformation;
 		this.finishedBookInformation = null;
 		this.bookType = BookType.READING;
-		this.startDate = startDate;
+		this.duration = duration;
 	}
 
-	public void updateToWishBook(WishBookInformation wishBookInformation) {
+	public void update(WishBookInformation wishBookInformation) {
 		this.wishBookInformation = wishBookInformation;
 		this.readingBookInformation = null;
 		this.finishedBookInformation = null;
 		this.bookType = BookType.WISH;
+		this.duration = null;
 	}
 
 	/**
